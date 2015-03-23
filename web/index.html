@@ -11,18 +11,28 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="js/main.js"></script>
-        
+
     </head>
     <body>
-        <div>
+        <div id="ser">
             <p>Search: <input id="search" />
-            <select id="type">
-                <option value="all">All</option>
-                <option value="restaurant">Restaurant</option>
-                <option value="pub">Pub</option>
-                <option value="lcbo">Lcbo</option>
-            </select>
-            <button id="goSearch">Search</button></p>
+                <select id="type">
+                    <option value="all">All</option>
+                    <option value="restaurant">Restaurant</option>
+                    <option value="pub">Pub</option>
+                    <option value="lcbo">Lcbo</option>
+                </select>
+                <button id="goSearch">Search</button></p>
+        </div>
+        <div id="sav">
+            <p>Saved: <input id="savedSearch" />
+                <select id="typeSaved">
+                    <option value="all">All</option>
+                    <option value="restaurant">Restaurant</option>
+                    <option value="pub">Pub</option>
+                    <option value="lcbo">Lcbo</option>
+                </select>
+                <button id="goSaved">Search</button>
         </div>
         <div id="output"></div>
     </body>
