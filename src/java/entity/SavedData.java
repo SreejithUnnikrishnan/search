@@ -133,52 +133,53 @@ public class SavedData {
         }
     }
 
-    public String addData(String str) {
-        JsonParser parser = Json.createParser(new StringReader(str));
-        Map<String, String> map = new HashMap<>();
-        String name = "";
-        String value;
-        while (parser.hasNext()) {
-            JsonParser.Event evt = parser.next();
-            switch (evt) {
-                case KEY_NAME:
-                    name = parser.getString();
-                    break;
-                case VALUE_STRING:
-                    value = parser.getString();
-                    map.put(name, value);
-                    break;
-                case VALUE_NUMBER:
-                    value = Integer.toString(parser.getInt());
-                    map.put(name, value);
-                    break;
-            }
-        }
-        int changes = 0;
-
-        try (Connection connection = DatabaseConnection.getConnection()) {
-            String query = "INSERT INTO saved_data (name, address, phone,search_type,place) VALUES (?, ?, ?, ? ,? )";
-            PreparedStatement pstmt = connection.prepareStatement(query);
-            pstmt.setString(1, map.get("name"));
-            pstmt.setString(2, map.get("address"));
-            pstmt.setString(3, map.get("phone"));
-            pstmt.setString(4, map.get("searchType"));
-            pstmt.setString(5, map.get("place"));
-            changes = pstmt.executeUpdate();
-            if (changes == 0) {
-                return "failed";
-            } else {
-                return "success";
-            }
-
-        } catch (SQLException ex) {
-            System.out.println("Sql Exception: " + ex.getMessage());
-            return "failed";
-        }
-
-    }
+//    public String addData(String str) {
+//        JsonParser parser = Json.createParser(new StringReader(str));
+//        Map<String, String> map = new HashMap<>();
+//        String name = "";
+//        String value;
+//        while (parser.hasNext()) {
+//            JsonParser.Event evt = parser.next();
+//            switch (evt) {
+//                case KEY_NAME:
+//                    name = parser.getString();
+//                    break;
+//                case VALUE_STRING:
+//                    value = parser.getString();
+//                    map.put(name, value);
+//                    break;
+//                case VALUE_NUMBER:
+//                    value = Integer.toString(parser.getInt());
+//                    map.put(name, value);
+//                    break;
+//            }
+//        }
+//        int changes = 0;
+//
+//        try (Connection connection = DatabaseConnection.getConnection()) {
+//            String query = "INSERT INTO saved_data (name, address, phone,search_type,place) VALUES (?, ?, ?, ? ,? )";
+//            PreparedStatement pstmt = connection.prepareStatement(query);
+//            pstmt.setString(1, map.get("name"));
+//            pstmt.setString(2, map.get("address"));
+//            pstmt.setString(3, map.get("phone"));
+//            pstmt.setString(4, map.get("searchType"));
+//            pstmt.setString(5, map.get("place"));
+//            changes = pstmt.executeUpdate();
+//            if (changes == 0) {
+//                return "failed";
+//            } else {
+//                return "success";
+//            }
+//
+//        } catch (SQLException ex) {
+//            System.out.println("Sql Exception: " + ex.getMessage());
+//            return "failed";
+//        }
+//
+//    }
 
     public String delete(String id) {
+        
         String query = "delete from saved_data where id = ?";
         int numChanges = 0;
         try (Connection connection = DatabaseConnection.getConnection()) {
@@ -188,14 +189,44 @@ public class SavedData {
             if (numChanges > 0) {
                 return "success";
             } else {
+                
                 return "failed";
             }
 
         } catch (SQLException ex) {
+           
             System.out.println("Sql Exception: " + ex.getMessage());
             return "failed";
         }
 
     }
+    
+        
+    public String addData(String id) {
+        System.out.println("hellooooo....." + id);
+        
+       int changes = 0;
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            String query = "INSERT INTO saved_data (name, address, phone,search_type,place) select name,address,phone,search_type,place from search_data where id = ?";
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.setString(1, id);
+           
+            changes = pstmt.executeUpdate();
+            if (changes == 0) {
+                 System.out.println("heloooooooooooooooooooooooooooooooooooo");
+                return "failed";
+            } else {
+                return "success";
+            }
+
+        } catch (SQLException ex) {
+             System.out.println("hexxxxxxxxxxxxxxxxxxxxxxxxooo");
+            System.out.println("Sql Exception: " + ex.getMessage());
+            return "failed";
+        }
+
+    }
+
+   
 
 }

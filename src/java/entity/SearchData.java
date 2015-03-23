@@ -79,6 +79,7 @@ public class SearchData {
     }
 
     public String getSearchData(String place) {
+        
         try (Connection connection = DatabaseConnection.getConnection()) {
             StringWriter out = new StringWriter();
             JsonArrayBuilder jarray = Json.createArrayBuilder();

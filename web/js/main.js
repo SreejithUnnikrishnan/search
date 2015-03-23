@@ -5,9 +5,9 @@
  */
 
 $(document).ready(function () {
-
 $('#goSearch').click(function () {
 if ($('#search').val() === ''){
+    alert("please enter search string");
     console.log("please enter search string");
 }
 else{
@@ -18,9 +18,10 @@ else{
             if (data && data !== null) {
             var outHtml = "";
                     for (var i = 0; i < data.length; i++)
-                    //id = data[i].id;
-                    outHtml += "<p>" + data[i].name + "<button id=\"details\">Details</button></p>"
-                    + "<input type=\"hidden\" id=\"hid\" value=\"" + data[i].id + "\"/>";
+                    outHtml += "<p>" + data[i].name + "&nbsp<button id=\"save\" onclick=\"save(" + data[i].id + ")\">Save</button></p>"
+                    + "<input type=\"hidden\" id=\"hid\" value=\"" + data[i].id + "\"/>"
+                    + "<p>" + data[i].address + "</p>"
+                    + "<p>" + data[i].phone + "</p>";
             }
             else {
                 var outHtml = "<p>No Results found</p>";
@@ -42,6 +43,26 @@ else{
             }
     });
 });
+
+
+function save(id) {
+    console.log("id:" +id);
+//    var url = './webresources/saved/';
+//                    $.post(url, id, function (data) {
+//                    var outHtml = "";
+//                                                    
+//                            outHtml += "<p>" + data + "</p>";
+//                            $('#output').html(outHtml);
+//                    });
+    $.ajax({
+       url: 'webresources/saved',
+       method: 'POST',
+       data: { 'id' : id },
+       success: function(data) {
+           $('#output').text(data);
+       }
+    });
+}
 
 
 

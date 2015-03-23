@@ -42,8 +42,9 @@ public class SavedDataServices {
     }
     
     @POST
-    @Consumes("application/json")
+    //@Consumes("application/json")
     public String addData(String str){
+        System.out.println("inside post of saved data...:" + str + ":asdfjashd");
         String result = saved.addData(str);
         return result;
     }
