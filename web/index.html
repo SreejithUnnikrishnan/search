@@ -9,8 +9,21 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="js/main.js"></script>
+        
     </head>
     <body>
-        <div>TODO write content</div>
+        <div>
+            <p>Search: <input id="search" />
+            <select id="type">
+                <option value="all">All</option>
+                <option value="restaurant">Restaurant</option>
+                <option value="pub">Pub</option>
+                <option value="lcbo">Lcbo</option>
+            </select>
+            <button id="goSearch">Search</button></p>
+        </div>
+        <div id="output"></div>
     </body>
 </html>

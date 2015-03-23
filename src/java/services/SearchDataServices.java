@@ -37,5 +37,7 @@ public class SearchDataServices {
         String result = search.getSearchType(place, type);
         return result;
     }
+    
+    
 
 }

@@ -129,5 +129,32 @@ public class SearchData {
             return "failed";
         }
     }
+    
+    
+    public String getDetails(int id) {
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            StringWriter out = new StringWriter();
+            JsonArrayBuilder jarray = Json.createArrayBuilder();
+            String query = "SELECT * FROM search_data WHERE place = ?";
+            PreparedStatement pstmt = connection.prepareStatement(query);
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                JsonObjectBuilder obj = Json.createObjectBuilder()
+                        .add("id", rs.getInt("id"))
+                        .add("name", rs.getString("name"))
+                        .add("address", rs.getString("address"))
+                        .add("phone", rs.getString("phone"))
+                        .add("searchType", rs.getString("search_type"));
+                jarray.add(obj);
+            }
+            return jarray.build().toString();
+
+        } catch (SQLException ex) {
+            System.out.println("Exception in getting database connection: " + ex.getMessage());
+            return "failed";
+        }
+
+    }
 
 }
