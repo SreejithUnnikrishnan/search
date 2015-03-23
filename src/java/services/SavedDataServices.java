@@ -7,7 +7,10 @@ package services;
 
 
 import entity.SavedData;
+import java.io.StringReader;
 import javax.ejb.EJB;
+import javax.json.Json;
+import javax.json.stream.JsonParser;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -45,7 +48,8 @@ public class SavedDataServices {
     //@Consumes("application/json")
     public String addData(String str){
         System.out.println("inside post of saved data...:" + str + ":asdfjashd");
-        String result = saved.addData(str);
+        String value = str.substring(3);
+        String result = saved.addData(value);
         return result;
     }
     
