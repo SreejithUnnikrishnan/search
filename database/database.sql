@@ -19,6 +19,7 @@ CREATE TABLE search_data (
 	phone VARCHAR(10),
 	search_type VARCHAR(20) NOT NULL,
 	place VARCHAR(20) NOT NULL,
+        type VARCHAR(20) NOT NULL,
 	CONSTRAINT search_data_id_pk PRIMARY KEY (id)
 );
 
@@ -34,6 +35,7 @@ CREATE TABLE saved_data (
 	phone VARCHAR(10),
 	search_type VARCHAR(20) NOT NULL,
 	place VARCHAR(20) NOT NULL,
+        type VARCHAR(20) NOT NULL,
 	CONSTRAINT saved_data_id_pk PRIMARY KEY (id)
 );
 
@@ -42,19 +44,19 @@ ALTER TABLE saved_data AUTO_INCREMENT = 5001;
 
 
 -- INSERT
-INSERT INTO search_data (name,address,phone,search_type,place) VALUES ('Hana Japanese restaurant','1381 London Rd,Sarnia, ON','5193368188','restaurant','sarnia');
-INSERT INTO search_data (name,address,phone,search_type,place) VALUES ('Olives','1591 London Line,Sarnia, ON','5195411333','restaurant','sarnia');
-INSERT INTO search_data (name,address,phone,search_type,place) VALUES ('Waggs Steak & Seafood','420 Christina St N,Sarnia, ON','5193444422','restaurant','sarnia');
-INSERT INTO search_data (name,address,phone,search_type,place) VALUES ('Maison St-Aubin','1202 Lakeshore Rd,Sarnia, ON','5195429507','restaurant','sarnia');
-INSERT INTO search_data (name,address,phone,search_type,place) VALUES ('Ciccios Place','869 Exmouth St,Sarnia, ON','5193373711','restaurant','sarnia');
-INSERT INTO search_data (name,address,phone,search_type,place) VALUES ('Paddy Flahertys Irish','130 Seaway Road, Sarnia, ON N7T 8A5','5193361999','pub','sarnia');
-INSERT INTO search_data (name,address,phone,search_type,place) VALUES ('Prime Pubs','130 Seaway Road, Sarnia, ON N7T 8A5','5193361999','pub','sarnia');
-INSERT INTO search_data (name,address,phone,search_type,place) VALUES ('Ups N Downs','226 Front St N, Sarnia, Ontario','5193360337','pub','sarnia');
-INSERT INTO search_data (name,address,phone,search_type,place) VALUES ('LCBO','1450 Quinn Drive,Sarnia, ON','5195426836','lcbo','sarnia');
-INSERT INTO search_data (name,address,phone,search_type,place) VALUES ('LCBO Sarnia','1142 Lakeshore Rd,Sarnia, ON','5195427410','lcbo','sarnia');
-INSERT INTO search_data (name,address,phone,search_type,place) VALUES ('LCBO','408 Lyndoch St,Corunna, ON','5198623456','lcbo','sarnia');
+INSERT INTO search_data (name,address,phone,search_type,place,type) VALUES ('Hana Japanese restaurant','1381 London Rd,Sarnia, ON','5193368188','restaurant','sarnia','chinese');
+INSERT INTO search_data (name,address,phone,search_type,place,type) VALUES ('Olives','1591 London Line,Sarnia, ON','5195411333','restaurant','sarnia','continental');
+INSERT INTO search_data (name,address,phone,search_type,place,type) VALUES ('Waggs Steak & Seafood','420 Christina St N,Sarnia, ON','5193444422','restaurant','sarnia','sea food');
+INSERT INTO search_data (name,address,phone,search_type,place,type) VALUES ('Maison St-Aubin','1202 Lakeshore Rd,Sarnia, ON','5195429507','restaurant','sarnia','continental');
+INSERT INTO search_data (name,address,phone,search_type,place,type) VALUES ('Ciccios Place','869 Exmouth St,Sarnia, ON','5193373711','restaurant','sarnia','continental');
+INSERT INTO search_data (name,address,phone,search_type,place,type) VALUES ('Paddy Flahertys Irish','130 Seaway Road, Sarnia, ON N7T 8A5','5193361999','pub','sarnia','llbo');
+INSERT INTO search_data (name,address,phone,search_type,place,type) VALUES ('Prime Pubs','130 Seaway Road, Sarnia, ON N7T 8A5','5193361999','pub','sarnia','llbo');
+INSERT INTO search_data (name,address,phone,search_type,place,type) VALUES ('Ups N Downs','226 Front St N, Sarnia, Ontario','5193360337','pub','sarnia','llbo');
+INSERT INTO search_data (name,address,phone,search_type,place,type) VALUES ('LCBO','1450 Quinn Drive,Sarnia, ON','5195426836','lcbo','sarnia','lcbo');
+INSERT INTO search_data (name,address,phone,search_type,place,type) VALUES ('LCBO Sarnia','1142 Lakeshore Rd,Sarnia, ON','5195427410','lcbo','sarnia','lcbo');
+INSERT INTO search_data (name,address,phone,search_type,place,type) VALUES ('LCBO','408 Lyndoch St,Corunna, ON','5198623456','lcbo','sarnia','lcbo');
 
 
 
-INSERT INTO saved_data (name,address,phone,search_type,place) VALUES ('Hana Japanese restaurant','1381 London Rd,Sarnia, ON','5193368188','restaurant','sarnia');
-INSERT INTO saved_data (name,address,phone,search_type,place) VALUES ('Prime Pubs','130 Seaway Road, Sarnia, ON N7T 8A5','5193361999','pub','sarnia');
+INSERT INTO saved_data (name,address,phone,search_type,place,type) VALUES ('Hana Japanese restaurant','1381 London Rd,Sarnia, ON','5193368188','restaurant','sarnia','chinese');
+INSERT INTO saved_data (name,address,phone,search_type,place,type) VALUES ('Prime Pubs','130 Seaway Road, Sarnia, ON N7T 8A5','5193361999','pub','sarnia','llbo');
