@@ -111,12 +111,13 @@ public class SearchData {
         try (Connection connection = DatabaseConnection.getConnection()) {
             StringWriter out = new StringWriter();
             JsonArrayBuilder jarray = Json.createArrayBuilder();
-            String query = "SELECT * FROM search_data WHERE place like ? or type like ? or name like ? AND search_type = ?";
+            String query = "SELECT * FROM search_data WHERE search_type = ? AND place like ? or type like ? or name like ?";
             PreparedStatement pstmt = connection.prepareStatement(query);
-            pstmt.setString(1, place);
-            pstmt.setString(2, "%" + place + "%");
-            pstmt.setString(3, place + "%");
-            pstmt.setString(4, type);
+            pstmt.setString(1, type);
+            pstmt.setString(2, place);
+            pstmt.setString(3, "%" + place + "%");
+            pstmt.setString(4, place + "%");
+            
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 JsonObjectBuilder obj = Json.createObjectBuilder()
