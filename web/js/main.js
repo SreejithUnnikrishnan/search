@@ -18,10 +18,10 @@ $(document).ready(function () {
                     if (data && data !== null) {
                         var outHtml = "";
                         for (var i = 0; i < data.length; i++)
-                            outHtml += "<p>" + data[i].name + "&nbsp<button id=\"save\" onclick=\"save(" + data[i].id + ")\">Save</button></p>"
+                            outHtml += "<div id=\"data\"><p>" + data[i].name + "&nbsp<button id=\"save\" onclick=\"save(" + data[i].id + ")\">Save</button></p>"
                                     + "<input type=\"hidden\" id=\"hid\" value=\"" + data[i].id + "\"/>"
                                     + "<p>" + data[i].address + "</p>"
-                                    + "<p>" + data[i].phone + "</p>";
+                                    + "<p>" + data[i].phone + "</p></div>";
                     }
                     else {
                         var outHtml = "<p>No Results found</p>";
@@ -32,13 +32,18 @@ $(document).ready(function () {
             else {
                 var url = './webresources/search/' + $('#search').val() + '/' + type;
                 $.getJSON(url, function (data) {
+                    if (data && data !== null) {
                     var outHtml = "";
                     for (var i = 0; i < data.length; i++)
-                        //id = data[i].id;
-                         outHtml += "<p>" + data[i].name + "&nbsp<button id=\"save\" onclick=\"save(" + data[i].id + ")\">Save</button></p>"
+                       
+                         outHtml += "<div id=\"data\"><p>" + data[i].name + "&nbsp<button id=\"save\" onclick=\"save(" + data[i].id + ")\">Save</button></p>"
                                     + "<input type=\"hidden\" id=\"hid\" value=\"" + data[i].id + "\"/>"
                                     + "<p>" + data[i].address + "</p>"
-                                    + "<p>" + data[i].phone + "</p>";
+                                    + "<p>" + data[i].phone + "</p></div>";
+                    }
+                    else {
+                        var outHtml = "<p>No Results found</p>";
+                    }
                     $('#output').html(outHtml);
                 });
             }

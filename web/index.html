@@ -6,16 +6,19 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Eat And Drink</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="http://code.jquery.com/jquery.min.js"></script>
         <script src="js/main.js"></script>
-
+        <link href="style/styles.css" rel="stylesheet" type="text/css"> 
     </head>
+    
     <body>
+        <h2>Eat & Drink</h2>
         <div id="ser">
-            <p>Search: <input id="search" />
+            <p><label for="searc">Search:</label><br>
+                <input id="search" />
                 <select id="type">
                     <option value="all">All</option>
                     <option value="restaurant">Restaurant</option>
@@ -25,7 +28,8 @@ and open the template in the editor.
                 <button id="goSearch">Search</button></p>
         </div>
         <div id="sav">
-            <p>Saved: <input id="savedSearch" />
+            <p><label for="save">Saved:</label><br>
+                <input id="savedSearch" />
                 <select id="typeSaved">
                     <option value="all">All</option>
                     <option value="restaurant">Restaurant</option>
