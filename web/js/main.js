@@ -64,10 +64,10 @@ $(document).ready(function () {
                     if (data && data !== null) {
                         var outHtml = "";
                         for (var i = 0; i < data.length; i++)
-                            outHtml += "<p>" + data[i].name + "</p>"
+                            outHtml += "<div id=\"data\"><p>" + data[i].name + "&nbsp<button id=\"del\" onclick=\"del(" + data[i].id + ")\">Delete</button></p>"
                                     + "<input type=\"hidden\" id=\"hid\" value=\"" + data[i].id + "\"/>"
                                     + "<p>" + data[i].address + "</p>"
-                                    + "<p>" + data[i].phone + "</p>";
+                                    + "<p>" + data[i].phone + "</p></div>";
                     }
                     else {
                         var outHtml = "<p>No Results found</p>";
@@ -78,13 +78,18 @@ $(document).ready(function () {
             else {
                 var url = './webresources/saved/' + $('#savedSearch').val() + '/' + type;
                 $.getJSON(url, function (data) {
+                    if (data && data !== null) {
                     var outHtml = "";
                     for (var i = 0; i < data.length; i++)
                         //id = data[i].id;
-                        outHtml += "<p>" + data[i].name + "</p>"
+                        outHtml += "<div id=\"data\"><p>" + data[i].name + "&nbsp<button id=\"del\" onclick=\"del(" + data[i].id + ")\">Delete</button></p>"
                                     + "<input type=\"hidden\" id=\"hid\" value=\"" + data[i].id + "\"/>"
                                     + "<p>" + data[i].address + "</p>"
-                                    + "<p>" + data[i].phone + "</p>";
+                                    + "<p>" + data[i].phone + "</p></div>";
+                    }
+                    else {
+                        var outHtml = "<p>No Results found</p>";
+                    }
                     $('#output').html(outHtml);
                 });
             }
@@ -110,7 +115,19 @@ function save(id) {
             $('#output').text(data);
         }
     });
+
 }
+function del(id) {
+    console.log("id:" + id);
+    $.ajax({
+        url: 'webresources/saved/'+id,
+        method: 'DELETE',
+        success: function (data) {
+            $('#output').text(data);
+        }
+    });
+}
+
 
 
 

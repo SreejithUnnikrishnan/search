@@ -192,10 +192,10 @@ public class SavedData {
             pstmt.setString(1, id);
             numChanges = pstmt.executeUpdate();
             if (numChanges > 0) {
-                return "success";
+                return "Deleted";
             } else {
                 
-                return "failed";
+                return "failed to delete";
             }
 
         } catch (SQLException ex) {
@@ -212,7 +212,7 @@ public class SavedData {
         
        int changes = 0;
         try (Connection connection = DatabaseConnection.getConnection()) {
-            String query = "INSERT INTO saved_data (name, address, phone,search_type,place) select name,address,phone,search_type,place from search_data where id = ?";
+            String query = "INSERT INTO saved_data (name, address, phone,search_type,place,type) select name,address,phone,search_type,place,type from search_data where id = ?";
             PreparedStatement pstmt = connection.prepareStatement(query);
             pstmt.setString(1, id);
            
