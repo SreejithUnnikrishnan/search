@@ -15,7 +15,9 @@ $(document).ready(function () {
             if (type === 'all') {
                 var url = './webresources/search/' + $('#search').val();
                 $.getJSON(url, function (data) {
-                    if (data && data !== null) {
+                    
+                    if (data.length > 0) {
+                        
                         var outHtml = "";
                         for (var i = 0; i < data.length; i++)
                             outHtml += "<div id=\"data\"><p>" + data[i].name + "&nbsp<button id=\"save\" onclick=\"save(" + data[i].id + ")\">Save</button></p>"
@@ -23,8 +25,10 @@ $(document).ready(function () {
                                     + "<p>" + data[i].address + "</p>"
                                     + "<p>" + data[i].phone + "</p></div>";
                     }
+                
                     else {
-                        var outHtml = "<p>No Results found</p>";
+                        
+                        var outHtml = "<p id=\"error\">No Results found</p>";
                     }
                     $('#output').html(outHtml);
                 });
@@ -32,7 +36,8 @@ $(document).ready(function () {
             else {
                 var url = './webresources/search/' + $('#search').val() + '/' + type;
                 $.getJSON(url, function (data) {
-                    if (data && data !== null) {
+                    
+                    if (data.length > 0) {
                     var outHtml = "";
                     for (var i = 0; i < data.length; i++)
                        
@@ -42,7 +47,7 @@ $(document).ready(function () {
                                     + "<p>" + data[i].phone + "</p></div>";
                     }
                     else {
-                        var outHtml = "<p>No Results found</p>";
+                        var outHtml = "<p class=\"error\">No Results found</p>";
                     }
                     $('#output').html(outHtml);
                 });
@@ -61,7 +66,7 @@ $(document).ready(function () {
             if (type === 'all') {
                 var url = './webresources/saved/' + $('#savedSearch').val();
                 $.getJSON(url, function (data) {
-                    if (data && data !== null) {
+                    if (data.length > 0) {
                         var outHtml = "";
                         for (var i = 0; i < data.length; i++)
                             outHtml += "<div id=\"data\"><p>" + data[i].name + "&nbsp<button id=\"del\" onclick=\"del(" + data[i].id + ")\">Delete</button></p>"
@@ -70,7 +75,7 @@ $(document).ready(function () {
                                     + "<p>" + data[i].phone + "</p></div>";
                     }
                     else {
-                        var outHtml = "<p>No Results found</p>";
+                        var outHtml = "<p class=\"error\">No Results found</p>";
                     }
                     $('#output').html(outHtml);
                 });
@@ -78,7 +83,7 @@ $(document).ready(function () {
             else {
                 var url = './webresources/saved/' + $('#savedSearch').val() + '/' + type;
                 $.getJSON(url, function (data) {
-                    if (data && data !== null) {
+                    if (data.length > 0) {
                     var outHtml = "";
                     for (var i = 0; i < data.length; i++)
                         //id = data[i].id;
@@ -88,7 +93,7 @@ $(document).ready(function () {
                                     + "<p>" + data[i].phone + "</p></div>";
                     }
                     else {
-                        var outHtml = "<p>No Results found</p>";
+                        var outHtml = "<p class=\"error\">No Results found</p>";
                     }
                     $('#output').html(outHtml);
                 });

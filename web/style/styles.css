@@ -27,3 +27,7 @@ html{
     margin-left: 5px;
 }
 
+p #error{
+    color: red;
+}
+
