@@ -111,7 +111,7 @@ public class SearchData {
         try (Connection connection = DatabaseConnection.getConnection()) {
             StringWriter out = new StringWriter();
             JsonArrayBuilder jarray = Json.createArrayBuilder();
-            String query = "SELECT * FROM search_data WHERE search_type = ? AND place like ? or type like ? or name like ?";
+            String query = "SELECT * FROM search_data WHERE search_type = ? AND (place like ? or type like ? or name like ?)";
             PreparedStatement pstmt = connection.prepareStatement(query);
             pstmt.setString(1, type);
             pstmt.setString(2, place);
