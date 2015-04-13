@@ -7,7 +7,7 @@
 $(document).ready(function () {
     $('#goSearch').click(function () {
         if ($('#search').val() === '') {
-            alert("please enter search string");
+            alert("Please enter search string");
             console.log("please enter search string");
         }
         else {
@@ -58,7 +58,7 @@ $(document).ready(function () {
 
     $('#goSaved').click(function () {
         if ($('#savedSearch').val() === '') {
-            alert("please enter search string");
+            alert("Please enter search string");
             console.log("please enter search string");
         }
         else {

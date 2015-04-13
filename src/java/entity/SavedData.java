@@ -221,7 +221,7 @@ public class SavedData {
                  System.out.println("heloooooooooooooooooooooooooooooooooooo");
                 return "failed";
             } else {
-                return "success";
+                return "Saved";
             }
 
         } catch (SQLException ex) {
